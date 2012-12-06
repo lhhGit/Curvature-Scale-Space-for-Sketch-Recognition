@@ -1,4 +1,4 @@
-function [ smoothList,count] = computeCSS( pointList,sigma)
+function [ smoothList,count,idxs] = computeCSS( pointList,sigma)
 %COMPUTECSS compute the Curvature Scale Space of the given pointList
 %   pointList a list of points [0,0;1,1]
 
@@ -33,9 +33,8 @@ end
 % maximas = computeDerivative(1,curvatures);
 % idxs = find(abs(maximas) <= 0.000001);
 
+
 count = length(idxs);
-plot(smoothX,smoothY);
-hold on;
-plot(smoothX(idxs),smoothY(idxs),'r.');
+
 end
 
