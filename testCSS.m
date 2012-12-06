@@ -19,7 +19,7 @@ for i = 1 : 0.5: num
     [smoothList,count,zeroCrossings] = computeCSS(pList,sigma);
     %plot the smoothed curve and zero-crossing
     if ~isempty(find(sigmalist==i, 1))
-        subplot(rows,3,plotLoc); 
+        subplot(4,3,plotLoc); 
         plot(smoothList(:,1),smoothList(:,2));
         hold on;
         plot(smoothList(zeroCrossings,1),smoothList(zeroCrossings,2),'r.');
