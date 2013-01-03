@@ -10,7 +10,7 @@ if ~isCircled
     end
 else
     for i = 1 : length(list)
-        convlist(i) = sum(kernel.*safeget(list,i - (len-1)/2, i + (len-1)/2));
+        convlist(i) = sum(kernel.*safeGet(list,i - (len-1)/2, i + (len-1)/2));
     end
 end
 

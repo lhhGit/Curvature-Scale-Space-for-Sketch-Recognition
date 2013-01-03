@@ -1,4 +1,4 @@
-filename = 'SR_testData\\random';
+filename = 'SR_testData\\pavilion_1';
 ext = '.txt';
 pList = load([filename,ext]);
 %figure('NumberTitle','off','Name','raw graph'); 
@@ -18,7 +18,7 @@ cornercount(1) = count;
 cordList = cell(num*2-1,1);
 plotLoc = 4;
 pointer = 1;
-for i = 1 : 0.05: num
+for i = 1 : 0.1: num
     sigma = i;  
     [smoothList,count,zeroCrossings] = computeCSS(pList,sigma,isCircle);
     %plot the smoothed curve and zero-crossing
@@ -37,9 +37,11 @@ for i = 1 : 0.05: num
 end
 
 matrix = generateCSSMatrix(cordList,length(pList));
+saved = 1 - matrix;
+save('CSS_I.mat','saved');
 % plot zero-crossing count trend
 figure('NumberTitle','off','Name','Corner point count trend');
-plot(1:0.05:num,cornercount,'.');
+plot(1:0.1:num,cornercount,'.');
 % draw the CSS image 
 figure('NumberTitle','off','Name','CSS Image');
 CSSImage = imrotate(1-matrix,180);
