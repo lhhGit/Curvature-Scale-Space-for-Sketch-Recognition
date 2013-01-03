@@ -1,4 +1,4 @@
-filename = 'SR_testData\\pavilion_1';
+filename = 'SR_testData\\pavilion_3';
 ext = '.txt';
 pList = load([filename,ext]);
 %figure('NumberTitle','off','Name','raw graph'); 
@@ -12,7 +12,7 @@ plot(pList(:,1),pList(:,2));
 isCircle = 1;
 [dummy,count] = computeCSS(pList,1,isCircle);
 title('raw graph');
-num = 30;
+num = 25;
 cornercount = zeros(num*2-1,1);
 cornercount(1) = count;
 cordList = cell(num*2-1,1);
@@ -38,7 +38,7 @@ end
 
 matrix = generateCSSMatrix(cordList,length(pList));
 saved = 1 - matrix;
-save('CSS_I.mat','saved');
+save('CSS_M3.mat','saved');
 % plot zero-crossing count trend
 figure('NumberTitle','off','Name','Corner point count trend');
 plot(1:0.1:num,cornercount,'.');
