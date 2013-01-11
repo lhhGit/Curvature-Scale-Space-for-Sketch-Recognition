@@ -57,6 +57,8 @@ maximas = sortrows(maximas,-1);
 %remove the close maximas
 half_range2 = 8;
 for i = 1 : size(maximas,1)
+    % suppress maximas whose height is below 1/6 of the greatest possible
+    % height
     if maximas(i,1) < 1.0/6*size(image,1)
         maximas(i,:) = [0,0];
     end    
@@ -67,9 +69,10 @@ for i = 1 : size(maximas,1)
     end
 end
 maximas = maximas(maximas(:,1)>0,:);
-%plot(cords(:,2),cords(:,1),'.')
-%hold on;
-%plot(maximas(:,2),maximas(:,1),'r.');
+figure;
+plot(cords(:,2),cords(:,1),'.')
+hold on;
+plot(maximas(:,2),maximas(:,1),'r.');
 %a = 1;
 
 
