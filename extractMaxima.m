@@ -69,10 +69,10 @@ for i = 1 : size(maximas,1)
     end
 end
 maximas = maximas(maximas(:,1)>0,:);
-figure;
-plot(cords(:,2),cords(:,1),'.')
-hold on;
-plot(maximas(:,2),maximas(:,1),'r.');
+%figure;
+%plot(cords(:,2),cords(:,1),'.')
+%hold on;
+%plot(maximas(:,2),maximas(:,1),'r.');
 %a = 1;
 
 

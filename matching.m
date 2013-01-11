@@ -43,7 +43,7 @@ for j = 1:2
        temp_M(idx_M) = 0;
        maximas_M(idx_M,:) = [0,0];
        %temp_M = temp_M(temp_M>0);
-       disp(['create the %d th node',num2str(i)]);
+       %disp(['create the %d th node',num2str(i)]);
     end
     i = i + 1;
 end
