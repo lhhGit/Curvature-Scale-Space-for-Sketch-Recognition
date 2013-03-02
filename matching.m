@@ -2,7 +2,8 @@ function [ cost ] = matching( CSS_I, CSS_M )
 %MATCHING Matching algorithm of two CSS images
 %   cost   The matching cost
 %   CSS_I, CSS_M   The two input CSS binary images, belongs to image and
-%   model respectively
+%   model respectively, the first dimension correspond to y coord, and the
+%   second dimension correspond to x coord
 
 %   extract the maximas
 [cord_I_y,cord_I_x] = find(CSS_I == 0);
