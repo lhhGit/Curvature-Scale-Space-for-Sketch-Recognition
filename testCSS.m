@@ -1,4 +1,4 @@
-filename = 'SR_testData\\pavilion_trem_3';
+filename = 'SR_testData\\GCVdata\\figure1';
 ext = '.txt';
 pList = load([filename,ext]);
 %figure('NumberTitle','off','Name','raw graph'); 
@@ -38,7 +38,7 @@ end
 
 matrix = generateCSSMatrix(cordList,length(pList));
 saved = 1 - matrix;
-save('CSS_TREM_3.mat','saved');
+save('CSS_NEW.mat','saved');
 % plot zero-crossing count trend
 figure('NumberTitle','off','Name','Corner point count trend');
 plot(1:0.1:num,cornercount,'.');

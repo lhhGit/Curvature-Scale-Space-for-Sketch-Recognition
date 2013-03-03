@@ -118,7 +118,7 @@ while(~isempty(find(temp_I > 0, 1)) || ~isempty(find(temp_M > 0, 1)))
         % find the corresponding match in the model
         pivot = current_maxima(:,2) + shift;
         if ~isempty(find(temp_M > 0,1))    
-            [dummy,idx] = min(abs(temp_M - pivot));
+            [dummy,idx] = min(abs(maximas_M(:,2) - pivot));
             matched = maximas_M(idx,:);
             if isInRange(matched(2),pivot-half_range,pivot+half_range,size(CSS_I,2))
             %update cost
