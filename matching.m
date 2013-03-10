@@ -13,6 +13,19 @@ cord_M = [cord_M_y,cord_M_x];
 maximas_I = extractMaxima(cord_I,CSS_I);
 maximas_M = extractMaxima(cord_M,CSS_M);
 
+%is either of the maximas set is empty, then return the sum of the other
+%maximas as the cost
+if(isempty(maximas_I)||isempty(maximas_M))
+    if isempty(maximas_I)        
+        cost = sum(maximas_M(:,1));
+        return
+    else
+        cost = sum(maximas_I(:,1));
+        return
+    end
+end    
+
+
 maximas_I_im = maximas_I;
 maximas_M_im = maximas_M;
 %   find the two largest values of the CSS image of image
