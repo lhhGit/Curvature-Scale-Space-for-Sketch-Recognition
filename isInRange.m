@@ -16,7 +16,7 @@ while(endP>size)
     endP = endP - size; 
 end
 if (startP < endP)
-    isIn = input>=startP && input>=endP;
+    isIn = input>=startP && input<=endP;
 else
     isIn = input>=startP || input<=endP;
 
