@@ -44,7 +44,7 @@ costlog = [];
 
 [maxima_I_ini, idx_I_im] = max(temp_I);
 maxima_I = maximas_I(idx_I_im,:);
-indices = find(temp_M>=maxima_I_ini*0.8);
+indices = find(temp_M>=maxima_I_ini*0.8 & temp_M<=maxima_I_ini*1.25);
 if(~isempty(indices))
     maximum_candidates = [maximas_M(indices,:), indices];
 else
@@ -80,7 +80,7 @@ for j = 1:size(maximum_candidates,1)
     %create node for the second image maximum
     [maxima_I_ini, idx_I] = max(temp_I);
     maxima_I = maximas_I(idx_I,:);
-    indices = find(temp_M>=maxima_I_ini*0.8);
+    indices = find(temp_M>=maxima_I_ini*0.8 & temp_M<=maxima_I_ini*1.25);
     if(~isempty(indices))
         smaximum_candidates = [maximas_M(indices,:), indices];
     else
