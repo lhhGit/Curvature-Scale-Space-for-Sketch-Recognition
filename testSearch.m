@@ -14,7 +14,7 @@ for j = 1:length(sorted)
    matrixlist{j} = css_struct.saved;
 end
 
-CSS_I = matrixlist{37};
+CSS_I = matrixlist{19};
 
 len = length(matrixlist);
 costList = zeros(len,1);

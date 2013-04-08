@@ -66,7 +66,7 @@ for j = 1:size(maximum_candidates,1)
     node_List = struct('iList',[],'mList',[],'shift',[],'cost',[],'listSize',[]);
     % mark the image maximum as used
     temp_I(idx_I_im) = 0;
-    maximas_I(idx_I_im,:) = [0,0];
+    maximas_I(idx_I_im,:) = [0,-Inf];
     
     % the first two elements are coords, the third are index in temp_M
     maxima_M_currentInfo = maximum_candidates(j,:);
@@ -75,7 +75,7 @@ for j = 1:size(maximum_candidates,1)
     %if added to node_List, then remove from the to-add list
     index = maxima_M_currentInfo(3);
     temp_M(index) = 0;
-    maximas_M(index,:) = [0,0];
+    maximas_M(index,:) = [0,-Inf];
     
     %create node for the second image maximum
     [maxima_I_ini, idx_I] = max(temp_I);
@@ -99,14 +99,14 @@ for j = 1:size(maximum_candidates,1)
     temp_M = maximas_M(:,1); %copy of the maxima sigmas in the model, y coords
     % mark the image second maximum as used
     temp_I(idx_I) = 0;
-    maximas_I(idx_I,:) = [0,0];
+    maximas_I(idx_I,:) = [0,-Inf];
     maxima_M_currentInfo = smaximum_candidates(tt,:);
     node_List(i) = createNode(maxima_I,maxima_M_currentInfo(1:2));
     i = i + 1;
     %if added to node_List, then remove from the to-add list
     index = maxima_M_currentInfo(3);
     temp_M(index) = 0;
-    maximas_M(index,:) = [0,0];
+    maximas_M(index,:) = [0,-Inf];
     
     %expand nodes 
 half_range = 0.2 * size(CSS_I,2);
@@ -126,7 +126,7 @@ while(~isempty(find(temp_I > 0, 1)) || ~isempty(find(temp_M > 0, 1)))
         [maxima_I_y, idx_I] = max(temp_I);
         current_maxima = maximas_I(idx_I,:);
         temp_I(idx_I) = 0;
-        maximas_I(idx_I,:) = [0,0];
+        maximas_I(idx_I,:) = [0,-Inf];
         %temp_I = temp_I(temp_I>0);
         % find the corresponding match in the model
         pivot = current_maxima(:,2) + shift;
@@ -141,10 +141,10 @@ while(~isempty(find(temp_I > 0, 1)) || ~isempty(find(temp_M > 0, 1)))
             end
             %update list
             node_List(k).listSize = node_List(k).listSize + 1;
-            node_List(k).iList(node_List(k).listSize,:) = maxima_I;
+            node_List(k).iList(node_List(k).listSize,:) = current_maxima;
             node_List(k).mList(node_List(k).listSize,:) = matched;
             temp_M(idx) = 0;
-            maximas_M(idx,:) = [0,0];
+            maximas_M(idx,:) = [0,-Inf];
             %temp_M = temp_M(temp_M>0);
         else
             %if there are no more maximums in the model
@@ -160,7 +160,7 @@ while(~isempty(find(temp_I > 0, 1)) || ~isempty(find(temp_M > 0, 1)))
             node_List(k).iList(node_List(k).listSize,:) = maxima_I;
             node_List(k).mList(node_List(k).listSize,:) = matched;  
             temp_M(idx) = 0;
-            maximas_M(idx,:) = [0,0];
+            maximas_M(idx,:) = [0,-Inf];
             %temp_M = temp_M(temp_M>0);
         else
             break;

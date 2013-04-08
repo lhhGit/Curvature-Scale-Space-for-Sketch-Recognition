@@ -1,4 +1,4 @@
-filename = 'SR_testData\\pavilion_trem_3';
+filename = 'SR_testData\\GCVdata\\figure9';
 ext = '.txt';
 pList = load([filename,ext]);
 %figure('NumberTitle','off','Name','raw graph'); 
@@ -22,14 +22,14 @@ for i = 1 : 0.1: num
     sigma = i;  
     [smoothList,count,zeroCrossings] = computeCSS(pList,sigma,isCircle);
     %plot the smoothed curve and zero-crossing
-    %if ~isempty(find(sigmalist==i, 1))
-    %    subplot(rows,3,plotLoc); 
-    %    plot(smoothList(:,1),smoothList(:,2));
-    %    hold on;
-    %    plot(smoothList(zeroCrossings,1),smoothList(zeroCrossings,2),'r.');
-    %    title(['sigma=',int2str(sigma)]);
-    %    plotLoc = plotLoc + 1;
-    %end
+    if ~isempty(find(sigmalist==i, 1))
+        subplot(rows,3,plotLoc); 
+        plot(smoothList(:,1),smoothList(:,2));
+        hold on;
+        plot(smoothList(zeroCrossings,1),smoothList(zeroCrossings,2),'r.');
+        title(['sigma=',int2str(sigma)]);
+        plotLoc = plotLoc + 1;
+    end
     cords = [ones(count,1)*pointer,zeroCrossings];
     cordList{pointer} = cords;      
     cornercount(pointer) = count;
@@ -38,7 +38,7 @@ end
 
 matrix = generateCSSMatrix(cordList,length(pList));
 saved = 1 - matrix;
-save('CSS_TREM_3.mat','saved');
+save('CSS_FIGURE_9.mat','saved');
 % plot zero-crossing count trend
 figure('NumberTitle','off','Name','Corner point count trend');
 plot(1:0.1:num,cornercount,'.');
