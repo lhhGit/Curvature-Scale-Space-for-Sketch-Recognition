@@ -1,7 +1,7 @@
 function [ node ] = createNode( maxima_I,maxima_M )
 %CREATENODE Summary of this function goes here
 %   Detailed explanation goes here
-n = 20;
+n = 0;
 node.iList = zeros(n,2);
 node.mList = zeros(n,2);
 node.iList(1,:) = maxima_I;

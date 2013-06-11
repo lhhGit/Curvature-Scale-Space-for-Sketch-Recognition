@@ -3,6 +3,7 @@ function [ maximas ] = extractMaxima( cords, image )
 %   Detailed explanation goes here
 % sorted = sortrows(cords,1);
 % the first element is the y cord, the second x cord
+% the maximas are in y coord descending order
 maximas = zeros(size(cords));
 j = 1;
 for i = 1 : size(cords,1)
@@ -29,7 +30,7 @@ for i = 1 : size(cords,1)
      end
      
      if (Y+half_range > size(image,1))
-         ending_y = size(image,2);
+         ending_y = size(image,1);
      else
          ending_y = Y+half_range;
      end
@@ -56,12 +57,14 @@ maximas = maximas(maximas(:,1)>0,:);
 maximas = sortrows(maximas,-1);
 %remove the close maximas
 half_range2 = 8;
+threshold = 1.0/6*maximas(1,1);
 for i = 1 : size(maximas,1)
     % suppress maximas whose height is below 1/6 of the greatest possible
     % height
-    if maximas(i,1) < 1.0/6*size(image,1)
+    if maximas(i,1) < threshold
         maximas(i,:) = [0,0];
-    end    
+    end 
+    % suppress maximas that are too close
     if i<size(maximas,1) && maximas(i,1) == maximas(i+1,1) 
         if abs(maximas(i,2)-maximas(i+1,2)) < half_range2 
            maximas(i,:) = [0,0];

@@ -1,3 +1,9 @@
 *.asv
 *.mat
 SR_testData/*
+inputSet/*
+eccentricity/*
+ScreenShots/*
+Dataset/*
+original/*
+*.txt
